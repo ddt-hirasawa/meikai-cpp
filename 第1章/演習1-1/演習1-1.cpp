@@ -1,12 +1,17 @@
-#include<iostream> // 入出力を行うヘッダ
+// 入出力を行うヘッダ
+#include<iostream>
 
-using namespace std; // 名前空間 std を使います
+ // 名前空間 std を使います
+using namespace std;
 
-int main() // プログラムのメイン部分
+ // プログラムのメイン部分
+int main()
 {
-	cout << "平澤敬介です。"; // コンソールに 平澤敬介 と出力します
+ // コンソールに 平澤敬介 と出力します
+	cout << "平澤敬介です。";
 
-	return 0; // プログラム終了
+// プログラム終了
+	return 0;
 }
 // 入出力のヘッダである iostream がインクルードされないと、
 //" cout " がコンパイルできないです。
