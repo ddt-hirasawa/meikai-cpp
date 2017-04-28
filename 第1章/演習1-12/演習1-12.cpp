@@ -1,21 +1,26 @@
-#include<iostream>// 入出力のヘッダ
+// 演習1-12 三角形の面積をキーボードから底辺と高さを入力し表示される
 
-using namespace std;// 名前空間の指定
+#include<iostream>
 
-int main()// プログラム本文始まり
+using namespace std;
+
+// プログラム本文始まり
+int main()
 {
-	double hen,takasa;// double型 hen takasa を定義
+	double hen,takasa;// double型 hen takasa それぞれ 底辺 高さ
 
-	cout << "三角形の面積を求めます。\n";//コンソールに表示
-	cout << "底辺 : ";//				  コンソールに表示
-	cin >> hen;							//henの値を読み込む
-	cout << "高さ : ";					//コンソールに表示
-	cin >> takasa;						//takasaの値を読み込む
+	// 三角形の面積を求めるために宣言を行う
+	cout << "三角形の面積を求めます。\n";
+	// 三角形の面積を求めるために 底辺 の 値を 抽出する部分
+	cout << "底辺 : ";cin >> hen;
+	// 三角形の面積を求めるために 高さ の 値を 抽出する部分
+	cout << "高さ : ";cin >> takasa;
+	//三角形の面積を求めるために double型で変数を定義し
+	//値を三角形の面積の公式で初期化
+	double menseki = (hen*takasa)/2;
+	//挿入子で変数 menseki の三角形の面積が表紙さる
+	cout << "面積は" << menseki << "です。";
 
-	double menseki = (hen*takasa)/2; // double型 menseki を式の値で初期化
+	return 0;
 
-	cout << "面積は" << menseki << "です。"; // 三角形の面積を表示
-
-	return 0;// プログラム終了
-
-}// プログラム本文終わり
+}
