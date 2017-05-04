@@ -1,4 +1,10 @@
-// 演習2-17 double a; int b; a = b = 1.5 のときの値の移り変わりを説明せよ
+/*
+演習2-17 double a; int b; a = b = 1.5 のときの値の移り変わりを説明せよ
+
+作成日 2017年5月4日
+
+作成者 平澤敬介
+*/
 
 #include<iostream>
 
@@ -13,7 +19,7 @@ int main()
 	a = b = 1.5;
 
 	// コンソールに表示 a = 1 b = 1 と表示  説明部分 -> ＊１
-	cout << "double型 a : " << a << "\nint型 b :" << b;
+	cout << "double型 a : " << a << "\nint型 Int :" << b;
 
 	return 0;
 }
