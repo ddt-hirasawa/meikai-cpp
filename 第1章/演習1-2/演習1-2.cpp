@@ -1,4 +1,4 @@
-// 演習1-2 using namespace std 部分を削除した場合、
+
 // cout をコンパイルするために 個別に名前空間を指定しなければならない
 #include<iostream> // 入出力のヘッダ
 
