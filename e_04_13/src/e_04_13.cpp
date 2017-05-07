@@ -21,9 +21,9 @@ int main()
 
 	struct tm* timer = localtime(&current);		// timer -> で 表示したい 年 月 日 時間 を指すことができる
 
-	int temp = timer -> tm_mday-1;				// int型で現在の曜日を受け取る
+	int temp = timer -> tm_wday-1;				// int型で現在の曜日を受け取る
 
-	weekly select = static_cast<weekly>(temp);	// enum に型を変更しswitch文で使います
+	weekly select =  static_cast<weekly>(temp);	// enum に型を変更しswitch文で使います
 
 	// enum でswitch文を使います
 	switch(select) {
