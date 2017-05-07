@@ -57,7 +57,7 @@ int main()
  演算されてしまう。sizeof演算子の結果から 演算後は 4bit から 8bit にメモリが増え
  typeid演算子から 型が i から ｄに変更されていることがわかる
 
-/*実行結果
+実行結果
  sizeof演算子を使用
 int + int = 4
 double + double = 8
