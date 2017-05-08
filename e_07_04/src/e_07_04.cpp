@@ -20,7 +20,6 @@ int main()
 	const int max = 5;	//配列の要素数を定義します 変更しません
 	int Int[max];			//int型の配列を宣言します 要素数は const をつけているので変更できません
 
-
 	// 配列に値を代入するため要素数分繰り返し処理を行います
 	for(int i=0; i < max; i++) {
 
@@ -30,6 +29,7 @@ int main()
 		// キーボードからの値で要素の値が決まります
 		cin >> Int[i];
 	}
+
 	// 変更点 typeid演算子により Int の型を表示している 配列
 	cout << "配列 Int " << typeid(Int).name() << "\n";
 
