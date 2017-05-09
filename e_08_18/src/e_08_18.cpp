@@ -18,7 +18,7 @@ int str2int(const char*);
 
 int main()
 {
-	char digits[] = "1633234";	// char型の整数値 これをint型にする
+	char digits[] = "-163f3234";	// char型の整数値 これをint型にする
 
 	//関数呼び出し前の配列を表示しコンソールで確認すること
 	cout << "文字列 digits : " << digits << "\n"<< "int型 整数値に変換\n";
@@ -77,7 +77,11 @@ int str2int(const char* num)
 		//文字が0の場合 、その桁には何もせずswitch文から抜け出す
 		case '0'  : break;
 		//数字以外を一度でも検出したならば、変換できません
-		default :  injustice++; break;
+		default : if(*(num + i) != '-') {
+
+					// ただし、符号 - は例外です
+					injustice++;
+				}
 		}
 
 		//加算が終わったとき次の桁へ行くためにcnt10 を乗算していく
