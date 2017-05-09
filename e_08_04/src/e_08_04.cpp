@@ -13,7 +13,7 @@ using namespace std;
 int main()
 {
 	char a[][5] = {"LISP","C","Aba"};	// 配列による文字列の配列
-	char* p[] ={"PAUL","X","MAc"};	;	//ポインタによる文字列の配列
+	const char* p[] = {"ASD","HGJ","KHL"};
 
 	int n1 = sizeof(a) / sizeof(a[0]);	//配列の要素数を出す 配列全体の大きさを構成要素で割ることで文字列の数を出す
 
