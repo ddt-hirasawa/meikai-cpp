@@ -4,6 +4,10 @@
 #include<iostream>
 #include<string>
 
+
+//	1  2  3  4  5  6  7  8  9  10 11 12 月の末日
+int dmax[] = {31,28,31,30,31,30,31,31,30,31,30,31};
+
 class date{
 public:
 	int y,m,d;		// 西暦 月 日 を与えるデータメンバを構築する
@@ -63,6 +67,8 @@ public:
 	bool operator == (const date& tmp);
 	bool operator != (const date& tmp);
 	bool operator << (const date& tmp);
+	date operator - (const date& tmp);
+	date operator ++ (const date& tmp);
 
 	std::string to_string() const;
 
