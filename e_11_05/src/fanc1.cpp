@@ -5,6 +5,8 @@
 作成日 2017年5月10日
 
 作成者 平澤敬介
+
+編集日 2017年5月12日
 */
 
 #include<iostream>
@@ -120,6 +122,6 @@ int Date::week() const {
 		month += 12;
 	}
 	//ツェラーの公式で返却します
-	return (year + year / 4 - year / 400 + (13 * month + 8) / 5 + day_now) % 7;
+	return (year + year / 4 - year / 100 + year / 400 + (13 * month + 8) / 5 + day_now) % 7;
 }
 
