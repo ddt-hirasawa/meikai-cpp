@@ -220,3 +220,32 @@ date date::operator +=(int n) {
 	return tmp;
 }
 
+//日付をn日戻した日付に更新する複合代入演算子 -=
+date date::operator -=(int n) {
+	date tmp = *this;	//今日の日付をクラスオブジェクトに保管します
+
+	//指定された日付まで飛びます
+	for (int i = 0; i < n; i++) {
+
+		//今日が元旦なら昨日は
+		if (tmp.m <= 1 && tmp.d <= 1) {
+
+			tmp.y--;						//去年のの
+			tmp.m = 12;						//12月31日
+			tmp.d = dmax[tmp.m - 1];		//大晦日です
+
+			//月初めならば、昨日は月末です
+		} else if (tmp.d <= 1) {
+
+			tmp.m--;					//先月の
+			tmp.d = dmax[tmp.m-1];		//月末です
+
+			//何も変わったことがなければ
+		} else {
+
+			tmp.d--;		//ただ昨日に向かいます
+		}
+	}
+
+	return tmp;
+}

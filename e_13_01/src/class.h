@@ -71,6 +71,7 @@ public:
 	date operator ++ ();		//前置バージョン
 	date operator -- (int);		//後置バージョン
 	date operator += (int);
+	date operator -= (int);
 
 	std::string to_string() const;
 
