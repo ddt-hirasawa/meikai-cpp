@@ -1,0 +1,50 @@
+// 演習5-8 ランダムに配列の要素を代入し表示する その後、配列をランダムにシャッフルし表示を行う
+
+#include<iostream>
+
+//ランダム関数を使うためののライブラリ
+#include<cstdlib>
+
+//	現在時刻を定義しているライブラリ
+#include<ctime>
+
+using namespace std;
+
+int main()
+{
+	const int max = 10;
+	int nRandom[max];	// 配列を定義し乱数で埋め尽くします
+
+	//要素分乱数を代入するためループします
+	for(int i=0; i < max; i++) {
+
+		// 配列を乱数で埋め尽くします
+		nRandom[i] = rand() % 100;
+
+		// シャッフル前の配列を表示し比較します
+		cout << "nRandom[" << i << "] = " << nRandom[i] << "\n";
+	}
+
+	// シャッフルを行う宣言
+	cout << "シャッフル\n";
+
+	// シャッフルを行うため要素分ループします
+	for(int i=0; i < max; i++) {
+
+		// 配列の要素数分の乱数を発生させます
+		int Rand = rand() % max;
+
+		int set = nRandom[Rand];
+		nRandom[Rand] = nRandom[max-Rand];
+		nRandom[max-Rand] = set;
+	}
+
+	//シャッフル後を表示するためループします
+	for(int i=0; i < max; i++) {
+
+		// シャッフル後の配列を表示し比較します
+		cout << "nRandom[" << i << "] = " << nRandom[i] << "\n";
+	}
+
+	return 0;
+}

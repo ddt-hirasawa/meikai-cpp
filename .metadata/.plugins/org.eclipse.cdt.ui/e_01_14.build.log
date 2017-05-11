@@ -1,0 +1,8 @@
+13:25:15 **** インクリメンタル・ビルド of configuration Debug for project e_01_14 ****
+Info: Internal Builder is used for build
+g++ -o e_01_14.exe "src\\e_01_14.o" 
+g++: src\e_01_14.o: No such file or directory
+g++: no input files
+
+13:25:16 Build Finished (took 85ms)
+

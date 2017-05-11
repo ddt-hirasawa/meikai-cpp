@@ -1,0 +1,28 @@
+/*
+演習4-13 性別 季節 曜日を表す列挙体を自由に定義せよ
+
+作成日 2017年5月7日
+
+作成者 平澤敬介
+*/
+
+#include<iostream>
+#include<ctime>
+
+using namespace std;
+
+int main()
+{
+	enum weekly {SUN,MON,TUE,WED,THU,FRI,SAT}; // 曜日の列挙体 日曜日から土曜日に順で定義します
+
+	time_t current = time(NULL);
+
+	struct tm* timer = localtime(&current);
+
+	switch(timer -> tm_wday) {
+
+	case 0: break;
+	}
+
+	return 0;
+}

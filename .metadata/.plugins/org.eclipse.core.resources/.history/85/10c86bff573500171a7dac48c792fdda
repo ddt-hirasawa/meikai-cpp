@@ -1,0 +1,131 @@
+#include<iostream>
+#include"class.h"
+
+using namespace std;
+
+int Date::dswitch(int serect) const
+{
+	int obj;
+	switch(serect){
+	case 1:
+		do{
+		cout << "日 : ";
+		cin >> obj;
+		if(obj > LASTM1 || obj < 1)
+			cout << "やり直し(1 ～" << LASTM1 <<"日まで)";
+		}while(obj < 1 || obj > LASTM1); break;
+	case 2:
+		do{
+		cout << "日 : ";
+		cin >> obj;
+		if(obj > LASTM2 || obj < 1)
+			cout << "やり直し(1 ～" << LASTM2 <<"日まで)";
+		}while(obj < 1 || obj > LASTM2); break;
+	case 3:
+		do{
+		cout << "日 : ";
+		cin >> obj;
+		if(obj > LASTM3 || obj < 1)
+			cout << "やり直し(1 ～" << LASTM3 <<"日まで)";
+		}while(obj < 1 || obj > LASTM3); break;
+	case 4:
+		do{
+		cout << "日 : ";
+		cin >> obj;
+		if(obj > LASTM4 || obj < 1)
+			cout << "やり直し(1 ～" << LASTM4 <<"日まで)";
+		}while(obj < 1 || obj > LASTM4); break;
+	case 5:
+		do{
+		cout << "日 : ";
+		cin >> obj;
+		if(obj > LASTM5 || obj < 1)
+			cout << "やり直し(1 ～" << LASTM5 <<"日まで)";
+		}while(obj < 1 || obj > LASTM5); break;
+	case 6:
+		do{
+		cout << "日 : ";
+		cin >> obj;
+		if(obj > LASTM6 || obj < 1)
+			cout << "やり直し(1 ～" << LASTM6 <<"日まで)";
+		}while(obj < 1 || obj > LASTM6); break;
+	case 7:
+		do{
+		cout << "日 : ";
+		cin >> obj;
+		if(obj > LASTM7 || obj < 1)
+			cout << "やり直し(1 ～" << LASTM7 <<"日まで)";
+		}while(obj < 1 || obj > LASTM7); break;
+	case 8:
+		do{
+		cout << "日 : ";
+		cin >> obj;
+		if(obj > LASTM8 || obj < 1)
+			cout << "やり直し(1 ～" << LASTM8 <<"日まで)";
+		}while(obj < 1 || obj > LASTM8); break;
+	case 9:
+		do{
+		cout << "日 : ";
+		cin >> obj;
+		if(obj > LASTM9 || obj < 1)
+			cout << "やり直し(1 ～" << LASTM9 <<"日まで)";
+		}while(obj < 1 || obj > LASTM9); break;
+	case 10:
+		do{
+		cout << "日 : ";
+		cin >> obj;
+		if(obj > LASTM10 || obj < 1)
+			cout << "やり直し(1 ～" << LASTM10 <<"日まで)";
+		}while(obj < 1 || obj > LASTM10); break;
+	case 11:
+		do{
+		cout << "日 : ";
+		cin >> obj;
+		if(obj > LASTM11 || obj < 1)
+			cout << "やり直し(1 ～" << LASTM11 <<"日まで)";
+		}while(obj < 1 || obj > LASTM11); break;
+	case 12:
+		do{
+		cout << "日 : ";
+		cin >> obj;
+		if(obj > LASTM12 || obj < 1)
+			cout << "やり直し(1 ～" << LASTM12 <<"日まで)";
+		}while(obj < 1 || obj > LASTM12); break;
+	}
+
+	return obj;
+}
+
+std::ostream& operator << (std::ostream& stream,Date& tmp)
+{
+	return stream
+	<< tmp.year()
+	<< "年"
+	<< tmp.month()
+	<< "月"
+	<< tmp.day()
+	<< "日\n";
+}
+std::istream& operator >> (std::istream& stream,Date& tmp)
+{
+	do{
+	cout << "年 : ";
+	stream >> tmp.y;
+	if(tmp.y >= 2100 || tmp.y < 1900)
+		cout << "やり直し(1900 ～ 2100年まで)";
+	}while(tmp.y < 1900 || tmp.y > 2100);
+	do{
+	cout << "月 : ";
+	stream >> tmp.m;
+	if(tmp.m > 12 || tmp.m < 1)
+		cout << "やり直し(1 ～ 12月まで)";
+	}while(tmp.m < 1 || tmp.m > 12);
+	/*do{
+	cout << "日 : ";
+	stream >> tmp.d;
+	if(tmp.d > 31 || tmp.d < 1)
+		cout << "やり直し(1 ～ 31日まで)";
+	}while(tmp.d < 1 || tmp.d > 31);
+*/
+	return stream;
+}

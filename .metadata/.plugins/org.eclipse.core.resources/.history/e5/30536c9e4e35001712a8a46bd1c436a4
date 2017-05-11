@@ -1,0 +1,43 @@
+/*
+演習11-4 コンストラクタ初期化子によって明示的に初期化しない場合、メンバ部分オブジェクトが
+デフォルトコンストラクタで初期化されることを確認せよ
+
+作成日 2017年5月10日
+
+作成者 平澤敬介
+*/
+
+#include<iostream>
+#include"class.h"
+
+using namespace std;
+
+Account::Account(string name,string num,long amnt,int y,int m,int d)
+	: open(y) //: open(y,m,d)
+{
+	full_name = name;
+	number = num;
+	balance = amnt;
+	open = Date(y,m,d);
+}
+
+void Account::deposit(long tmp)
+{
+	balance += tmp;
+}
+
+void Account::with(long tmp)
+{
+	balance -= tmp;
+}
+
+istream& operator>>(istream& s,Date& x)
+{
+	cout << "年 : ";
+	s >> x.y;
+	cout << "月 : ";
+	s >> x.m;
+	cout << "日 : ";
+	s >> x.d;
+	return s;
+}

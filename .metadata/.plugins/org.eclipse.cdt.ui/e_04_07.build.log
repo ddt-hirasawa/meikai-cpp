@@ -1,0 +1,7 @@
+13:25:22 **** インクリメンタル・ビルド of configuration Debug for project e_04_07 ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\e_04_07.o" "..\\src\\e_04_07.cpp" 
+g++ -o e_04_07.exe "src\\e_04_07.o" 
+
+13:25:22 Build Finished (took 385ms)
+

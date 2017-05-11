@@ -1,0 +1,116 @@
+/*
+ 演習8-11 strcmp strncmp 関数と同様の関数を作りなさい
+
+ 作成日 2017年5月8日
+
+ 作成者 平澤敬介
+ */
+
+#include<iostream>
+
+using namespace std;
+
+// 文字列を比較する関数の宣言
+int my_strcmp(const char*, const char*);
+
+// 指定された長さまでの文字列を比較する関数の宣言
+int my_strncmp(const char*, const char*, int);
+
+int main() {
+	char aTest[] = "HBCE";		//
+	char bTest[] = "HBCE";		//関数を使って比較する文字列
+	char cTest[] = "AAA";	// それぞれ aとb cとd を比較する
+	char dTest[] = "AAA";		//
+	int n = 4;				// ７文字目まで長さを指定する
+
+	//比較前の文字列を a,b,c,d をそれぞれ改行し表示する
+	cout << "文字列 aTest " << aTest << "\n" << "文字列 bTest " << bTest << "\n";
+	cout << "文字列 cTest " << cTest << "\n" << "文字列 dTest " << dTest << "\n";
+
+	// 関数の呼び出し 文字列を比較して大きいか小さいかを数字で返却します
+	int ans1 = my_strcmp(aTest, bTest);
+
+	//返却された値でそれぞれのcase に向かい文字列を比較する
+	switch(ans1){
+
+	//
+	 case 0 : cout << "等しい文字列です\n"; break;
+
+	 //
+	 case 1 : cout << "文字列 a が大きいです\n"; break;
+
+	 //
+	 case -1 : cout << "文字列 b が大きいです\n"; break;
+	 }
+
+	 // 関数の呼び出し指定した長さまでで文字列を比較して大きいか小さいかを数字で返却します
+	 int ans2 = my_strncmp(cTest,dTest,n);
+
+	 //返却された値でそれぞれのcase に向かい文字列を比較する
+	 switch(ans2){
+
+	 case 0 : cout << "等しい文字列です\n"; break;
+
+
+	 case 1 : cout << "文字列 c が大きいです\n"; break;
+
+
+	 case -1 : cout << "文字列 d が大きいです\n"; break;
+	 }
+
+	return 0;
+}
+
+//関数 文字列を比較して整数を返す
+//仮引数 比較する文字列を指しているそれぞれ先頭のポインタ s1 s2
+//返却値 大きいか小さいかを整数で返却する
+
+int my_strcmp(const char* s1, const char* s2)
+{
+	int answer = 0;		//文字を比較したとき、大きいか小さいかを判断するため返却します
+
+	//文字列の要素数が違うため、お互いの文字列が
+	for (int i = 0;s1[i] == s2[i]; i++) {
+
+
+		if((s1)[i] > (int)s2[i]) {
+
+			answer++;
+
+
+			break;
+
+
+		} else if((int)s1[i] < (int)s2[i]) {
+
+
+			answer--;
+
+
+			break;
+
+		}
+
+	}
+
+	return answer;
+}
+
+int my_strncmp(const char* s1, const char* s2, int n)	// 指定された長さまでの文字列を比較する関数
+		{
+	int cnt = 0;									//返却する値 if文にかからなければ0のまま
+	for (int i = 1; i <= n; i++) {						//指定された長さまで比較する処理を行う
+		if (*s1 > *s2) {								//ｓ１の文字列が大きい場合、
+			cnt++;
+			break;							//cnt をインクリメントしループから外れる
+		} else if (*s1 < *s2) {						//ｓ２の文字列が大きい場合、
+			cnt--;
+			break;								//cnt をデクリメントしループから外れる
+		}											//
+		if (*s1 == '\0' || *s2 == '\0')
+			break;		//ｓ１とｓ２の文字列でナル文字を検出したときループから外れる
+		s1++;										//s1のポインタをインクリメント
+		s2++;										//s2のポインタをインクリメント
+	}												//
+	return cnt;									//比較する処理を終えた後の cnt を返却する
+}													//関数文終わり

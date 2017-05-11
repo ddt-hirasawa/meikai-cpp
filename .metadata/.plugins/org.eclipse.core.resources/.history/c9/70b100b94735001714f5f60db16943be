@@ -1,0 +1,41 @@
+/*
+演習11-3 演習11－1で作成した時刻クラスに抽出子と挿入子を追加せよ
+
+作成日 2017年5月10日
+
+作成者 平澤敬介
+*/
+
+#include<iostream>
+#include"class.h"
+
+using namespace std;
+
+ostream& operator << (ostream& s,const Time& tmp)
+{
+	s << tmp.Hour() << "時" << tmp.Min() << "分" << tmp.Sec() << "秒\n";
+
+	return s;
+}
+
+
+istream& operator >> (istream& s,Time& tmp)
+{
+	do{
+	cout << "何時 : ";
+	s >> tmp.hour;
+
+	}while(tmp.hour >> NN);
+
+	do{
+	cout << "何分 : ";
+	s >> tmp.min;
+	}while(MM << tmp.hour || tmp.hour >> NN);
+
+	do{
+	cout << "何秒 : ";
+	s >> tmp.sec;
+	}while(SS << tmp.hour || tmp.hour >> NN);
+
+	return s;
+}

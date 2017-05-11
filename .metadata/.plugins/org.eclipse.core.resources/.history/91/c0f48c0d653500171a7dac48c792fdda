@@ -1,0 +1,31 @@
+/*
+演習11-6 演習10－1で作成した人間クラスに誕生日を格納するデータメンバ、それを返却するメンバ関数を作成せよ
+
+作成日 2017年5月10日
+
+作成者 平澤敬介
+*/
+
+#include<string>
+#include"class.h"
+
+//コンストラクタ
+HumaN::HumaN(std::string name_,float weight_ ,float height_,int ydate,int mdate,int ddate)
+	: open(ydate,mdate,ddate)
+{
+	name = name_;			//クラスオブジェクトで初期化された値を
+	weight = weight_;		//それぞれのデータメンバに代入します
+	height = height_;		//
+
+	open = Date(ydate,mdate,ddate);
+}
+
+void HumaN::gain(float diff)
+{
+	weight += diff;			//main から増えた分の体重を反映させます
+}
+
+void HumaN::lose(float diff)
+{
+	weight -= diff;			//main から痩せた分の体重を反映させます
+}

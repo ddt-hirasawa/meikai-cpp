@@ -1,0 +1,73 @@
+/*
+演習8-15 文字列の中に含まれる最初の文字列ｘの最初の文字へのポインタを返す関数を作成する
+
+作成日 2017年5月9日
+
+作成者 平澤敬介
+*/
+
+#include<iostream>
+
+#include<cstring>
+// 文字列に関する処理が含まれているライブラリ
+using namespace std;
+
+ // 文字列の中で最も先頭に位置する文字列の先頭 のポインタを返す関数の宣言
+const char* str_match(char*,char*);
+int main()
+{
+	char sample[] = "DDT_KEISUHIRASAWA_KEISUKE"; //この文字列の中から探す 最も先頭の文字列のみ返却
+	char tmp[] = "KEISUKE";						//この文字列が含まれているか探す
+
+		// 関数処理前の文字列の表示を行う
+	cout << "文字列 sample " << sample << "\n";
+
+	// tmp と同じ文字列が探す文字列の中に存在する場合
+	if(str_match(sample,tmp) != '\0') {
+
+		// char型の文字をtmpと同じ文字のオブジェクトで初期化
+		char ptr = *(str_match(sample,tmp));
+
+		// 文字列の中にあるtmp の先頭のオブジェクトを表示し
+		// そのオブジェクトへのポインタを表示する
+		cout << "tmpのオブジェクトは " << ptr << "\n";
+
+		//そのオブジェクトを指すポインタのアドレスを表示します
+ 		cout << "tmpへのポインタは" << &ptr << "です。\n";
+	}else {
+
+		// tmp と同じ文字列が文字列の中に存在しない場合
+		// のみ、この文が表示される。
+		cout << "文字tmpは存在しません。\n";
+
+	}
+
+	return 0;
+}
+
+
+//関数 文字列s1の中に文字列s2が存在するとき その先頭へののポインタを返す
+//仮引数 それぞれの文字列の先頭を指すポインタ s1 s2
+//返却値  文字列s2 が含まれている場合は s1 の文字列のポインタを 含まれない場合はナル文字を返却します
+
+const char* str_match(char* s1,char* s2)
+{
+	int len = strlen(s2);
+
+	// 文字列を比較するため、s1 をナル文字まで探します
+	for(int i=0; *s1; i++) {
+
+		//探しているときに、s1 が s2の先頭文字  と同じ文字を指したとき
+		if(*s1 == *s2) {
+
+			if(strncmp(s1,s2,len) == 0) {
+				cout << (strncmp(s1,s2,len);
+				break;
+			}
+		}
+		s1++;
+		s2++;
+	}
+
+	return s1;
+}

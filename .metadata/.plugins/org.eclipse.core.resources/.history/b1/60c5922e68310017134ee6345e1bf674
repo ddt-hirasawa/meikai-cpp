@@ -1,0 +1,55 @@
+/*
+演習3-25 数当てゲームの作成 制限回数を設けて、当てられなかった場合正解を表示します
+
+作成日 2017年5月5日
+
+作成者 平澤敬介
+ */
+
+#include<iostream>
+
+// ランダム関数を定義しているライブラリ
+#include<cstdlib>
+
+ // 現在時刻を定義しているライブラリ
+#include<ctime>
+
+using namespace std;
+
+int main()
+{
+	srand(time(NULL)); // 乱数の生成
+
+	int x;
+	int n = 0;
+	int num = rand() % 100;
+
+	cout << "数当てゲーム開始!!(3回まで挑戦できます)\n"
+	<< "0～99の数を当ててください。\n";
+
+	do{
+		cout << "いくつかな？ :";
+
+
+		cin >> x;
+
+		if(x > num)	{
+			cout << "大きいです。\n";
+		} else if(x < num) {
+			cout << "小さいです。\n";
+		}
+		n++;
+		if(n > 3) {
+			return false;
+		}
+
+	}while(num != x);
+
+	cout << "正解です。\n";
+
+
+	cout << "失敗しました。";
+
+	return 0;
+
+}

@@ -1,0 +1,34 @@
+/*
+ * human.h
+ *
+ *  Created on: 2017/05/09
+ *      Author: admin
+ */
+
+#ifndef HUMAN_H_
+#define HUMAN_H_
+
+#include<string>
+
+class Human{
+
+private:
+	std::string Name;
+	float Omosa;
+	float Takasa;
+public:
+	Human();
+	Human(std::string name,float omosa = 0,float takasa = 0);
+
+	std::string name() { return Name; }
+	float omosa() { return Omosa; }
+	float takasa() { return Takasa; }
+
+	void genryou(float omosa);
+	void zouka(float omosa);
+};
+
+
+
+
+#endif /* HUMAN_H_ */

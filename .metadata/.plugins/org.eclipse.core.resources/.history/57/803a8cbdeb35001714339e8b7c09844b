@@ -1,0 +1,77 @@
+#include<iostream>
+// 日付クラスが定義されているヘッダ
+#include"class.h"
+
+using namespace std;
+
+int main()
+{
+	date dToday;// クラスのオブジェクトをデフォルトコンストラクタで呼び出す
+
+	// データメンバの値から挿入子を通して表示される
+	cout << "今日の日付 : " << dToday << "\n";
+
+	//データメンバの日付をデクリメントして昨日の日付を表示する
+	cout << "昨日の日付 : " << dToday.past() << "\n";
+
+	//減算関数を2回呼び出すことで一昨日の日付を表示する
+	cout << "一昨日の日付 : " << dToday.past().past().past() << "\n";
+
+	//データメンバの日付をインクリメントして昨日の日付を表示する
+	cout << "明日の日付 : " << dToday.future() << "\n";
+
+	//加算関数を2回呼び出すことで一昨日の日付を表示する
+	cout << "明後日の日付 : " << dToday.future().future() << "\n";
+
+	//その年の1月1日から何日経過しているか表示します。
+	cout << "元旦から" << dToday.day_of_year() << "日経過しています。\n";
+
+	//返却されてくるbool型の値でうるう年かどうかを判別して表示する
+	cout << "今年はうるう年" << (dToday.leap_year() ? "です。" : "ではありません。") << "\n";
+
+	date Select; // 指定したい日付を指定するためのオブジェクト
+
+	cin >> Select;
+
+	//返却されてくるbool型の値でうるう年かどうかを判別して表示する
+	cout << "その年はうるう年"<< (date::leap_year(Select.year()) ? "です。" : "ではありません。") << "\n";
+
+	// これ以降、演算子関数を使って行きます
+	cout << "入力した日は";
+
+	// == 演算子関数 order.cpp
+	if(Select == dToday) {
+
+
+		cout << "同じ日です\n";
+
+	} else {
+
+
+		cout << "違う日です\n";
+	}
+
+	//演算子関数をチェックするため、新たに値を入れます
+	cout << "再入力\n";
+	//日にちを更新します 同じに日にちでも可
+	cin >> Select;
+
+	if(Select != dToday)
+		cout << "同じ日です\n";
+	else
+		cout << "違う日です\n";
+
+	cout << "再入力\n";
+	cin >> Select;
+
+	cout << "指定した日は";
+	if( Select >= dToday)
+		cout << "まだ先です\n";
+	else
+		cout << "もう過ぎました\n";
+
+
+
+
+	return 0;
+}

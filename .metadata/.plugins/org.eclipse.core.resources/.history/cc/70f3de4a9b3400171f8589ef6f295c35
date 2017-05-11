@@ -1,0 +1,34 @@
+/*
+ * class.h
+ *
+ *  Created on: 2017/05/09
+ *      Author: admin
+ */
+
+#ifndef CLASS_H_
+#define CLASS_H_
+
+#include<string>
+
+class Human{
+
+private:
+	std::string name;
+	float weight;
+	float height;
+
+public:
+
+	Human(std::string name_,float weight_ = 0,float height_ = 0);
+
+	std::string full_name() { return name; }
+	float how_weight() { return weight; }
+	float how_height() { return height; }
+
+	void gain(float diff);
+	void lose(float diff);
+};
+
+
+
+#endif /* CLASS_H_ */

@@ -1,0 +1,20 @@
+// 演習10-1 名前 身長 体重 をメンバとして持つ 人間クラスを定義せよ
+
+#include<string>
+#include"class.h"
+
+Human::Human(std::string name_,float weight_ ,float height_)
+{
+	name = name_;
+	weight = weight_;
+	height = height_;
+}
+
+void HumaN::gain(float diff)
+{
+	weight -= diff;
+}
+void HumaN::lose(float diff)
+{
+	weight += diff;
+}

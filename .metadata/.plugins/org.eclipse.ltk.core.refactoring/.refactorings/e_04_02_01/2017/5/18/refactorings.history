@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="リソース名 &apos;e_04_02_01/src/e_04_02_02.cpp&apos; を &apos;e_04_02_01.cpp&apos; に変更します" description="リソース &apos;e_04_02_02.cpp&apos; の名前変更" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/e_04_02_02.cpp" name="e_04_02_01.cpp" stamp="1493977380916" updateReferences="true"/>
+</session>

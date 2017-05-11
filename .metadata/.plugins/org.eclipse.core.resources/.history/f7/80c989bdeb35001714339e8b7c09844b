@@ -1,0 +1,65 @@
+#include"class.h"
+
+using namespace std;
+
+
+//2つの日付が正しいかどうかの等価演算子 ==
+bool date::operator == (const date& tmp)
+  {//参照する tmp の西暦 と 比べるほうが等しい場合
+	//次の項目に移ります
+	if(this -> y == tmp.y) {
+		//参照する tmp の年 と 比べるほうが等しい場合
+				//次の項目に移ります
+		if(this -> m == tmp.m) {
+			//参照する tmp の日 と 比べるほうが等しい場合
+					//bool型のtrueを返却します。
+			if(this -> d == tmp.d) {
+				return true;
+			}
+		}
+	}
+	//参照する 項目が1つでも違う場合
+	//bool型のfalseを返却します
+	return false;
+  }
+
+//2つの日付がことなっているかどうかの等価演算子 !=
+bool date::operator != (const date& tmp)
+  {//参照する tmp の西暦 と 比べるほうが異なる場合
+	//次の項目に移ります
+	if(this -> y != tmp.y)
+		//参照する tmp の年 と 比べるほうが異なる場合
+				//次の項目に移ります
+		if(this -> m != tmp.m)
+			//参照する tmp の日 と 比べるほうが等しい場合
+					//bool型のtrueを返却します。
+			if(this -> d != tmp.d)
+				return true;
+	//参照する 項目が1つでも違う場合
+	//bool型のfalseを返却します
+	return false;
+  }
+
+//2つの日付の大小を判定する関係演算子 > >= < <=
+bool date::operator >= (const date& tmp)
+  {
+	bool answer;
+	if(this -> d >= tmp.d) {
+		answer = true;
+		}else{
+		answer = false;
+		}
+	if(this -> m >= tmp.m) {
+		answer = true;
+		}else{
+		answer = false;
+		}
+
+	if(this -> y >= tmp.y) {
+		answer = true;
+		}else{
+		answer = false;
+		}
+
+	return answer;
+  }

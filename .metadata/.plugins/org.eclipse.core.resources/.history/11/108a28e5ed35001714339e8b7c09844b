@@ -1,0 +1,56 @@
+#ifndef CLASS_H_
+#define CLASS_H_
+
+#include<iostream>
+#include<string>
+
+class date{
+public:
+	int y,m,d;		// 西暦 月 日 を与えるデータメンバを構築する
+	static int dmax[];	// 静的メンバ 1月から12月の末日を配列に保管している
+	static int days_of_month(int y,int m);	//静的メンバ関数
+
+public:
+	// デフォルトコンストラクタ
+	date();
+	// コンストラクタ「
+	date(int yy, int mm, int dd);
+	//引数として与えた西暦はうるう年かどうかbool型で返却を行う関数
+	static bool leap_year(int year)
+	{
+		return (year%4 == 0 && year%100) || year%400;// テキストの通りだと警告が消えない && (もしくは) の部分をかっこでくくること
+	}
+
+	int year() const {
+		return y;
+	}
+	int month() const {
+		return m;
+	}
+	int day() const {
+		return d;
+	}
+
+	bool leap_year() const {
+		return leap_year(y);
+	}
+
+	// 関数の宣言部分 課題以外の関数をすべて fanc.cpp にまとめる
+	date past() const;
+	date future() const;
+	int day_of_week() const;
+	int day_of_year() const;
+
+	// 関数の宣言部分 課題の関数をすべて order.cpp にまとめる
+	bool operator == (const date& tmp);
+	bool operator != (const date& tmp);
+	bool operator <= (const date& tmp);
+
+	std::string to_string() const;
+
+};
+
+std::ostream& operator << (std::ostream& s,const date& x);
+std::istream& operator >> (std::istream& s,date& x);
+
+#endif /* CLASS_H_ */

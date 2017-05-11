@@ -1,0 +1,27 @@
+// 演習7-16 要素数をキーボードから読み込み double型の配列を動的に生成する
+		// 生成に失敗したときの処理も行う
+
+#include<iostream>
+// 空ポインタ定数を定義しているライブラリ 0 のこと
+#include<new>
+
+using namespace std;
+
+int main()
+{
+
+	while(true){
+
+		try {
+			double* x = new double[30000];
+		}
+
+	catch (bad_alloc) {
+		cout << "配列の生成に失敗しました。プログラムを終了します。\n";
+		return 1;
+		}
+	}
+	return 0;
+}
+// 例外発生を抑制させるのはまずい
+//例外を発生させ拾う方が良い
