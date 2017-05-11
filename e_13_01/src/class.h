@@ -68,7 +68,9 @@ public:
 	bool operator != (const date& tmp);
 	bool operator << (const date& tmp);
 	date operator - (const date& tmp);
-	date operator ++ ();
+	date operator ++ ();		//前置バージョン
+	date operator -- (int);		//後置バージョン
+	date operator += (int);
 
 	std::string to_string() const;
 

@@ -105,42 +105,42 @@ bool date::operator <<(const date& tmp)
 }
 
 //2つの日付の減算を行う減算演算子 -
-date date::operator - (const date& tmp)
+date date::operator -(const date& tmp)
 //tnis ポインタでさしたクラスと 参照するクラスとでデータメンバの値の差を求めます
-{
+		{
 	date answer;	//クラスオブジェクト 指定した日にちと本日の差で初期化します
 
-	answer.y = tmp.y - this -> y;		//選択した西暦と本日の西暦の差を出します。
-	answer.m = tmp.m - this -> m;		//選択した月と本日の月の差を出します。
-	answer.d = tmp.d - this -> d;		//選択した日と本日の日の差を出します。
+	answer.y = tmp.y - this->y;		//選択した西暦と本日の西暦の差を出します。
+	answer.m = tmp.m - this->m;		//選択した月と本日の月の差を出します。
+	answer.d = tmp.d - this->d;		//選択した日と本日の日の差を出します。
 
 	//差分をクラスオブジェクトとして生成します
 	return answer;
 }
 
 //日付を翌日に更新する増分演算子 ＋＋
-date date::operator ++ ()
+date date::operator ++()
 //明日の日付は、月や年月によって様変わりします。
 {
 	date tmp = *this;	//今日の日付をクラスオブジェクトに保管します
 
 	//今日が12月31日の場合、
-	if(tmp.m == 12 && tmp.d == dmax[11]) {
+	if (tmp.m == 12 && tmp.d == dmax[11]) {
 
 		tmp.y++;		//来年の
 		tmp.m = 1;		//1月
 		tmp.d = 1;		//1日 元旦にします
 
-	//明日が来年ではないのならば
+		//明日が来年ではなく
 	} else {
 		//今日が月末でないならば
-		if(tmp.d < dmax[ tmp.m + 1 ]) {
+		if (tmp.d < dmax[tmp.m + 1]) {
 
 			//明日にします。
 			tmp.d++;
 
-		//月末ならば
-		} else	{
+			//月末ならば
+		} else {
 
 			//初日にします
 			tmp.d = 1;
@@ -154,11 +154,69 @@ date date::operator ++ ()
 	return tmp;
 }
 
+//日付を昨日に更新する減分演算子 ＋＋
+date date::operator --(int)
+//昨日の日付は、月や年月によって様変わりします。
+		{
+	date tmp = *this;	//今日の日付をクラスオブジェクトに保管します
 
+	//今日が元旦の場合、
+	if (tmp.m == 1 && tmp.d == 1) {
 
+		tmp.y--;		//去年の
+		tmp.m = 12;		//12月
+		tmp.d = dmax[11];		//31日 元旦にします
 
+		//昨日が来年ではなく
+	} else {
+		//今日が月初めでないならば
+		if (tmp.d > 1) {
 
+			//昨日にします。
+			tmp.d--;
 
+			//月初めならば
+		} else {
 
+			//昨月にします
+			tmp.m--;
 
+			//月末にします
+			tmp.d = dmax[tmp.m];
+		}
+	}
+	cout << "昨日は ";
+	//昨日を表示します
+	return tmp;
+}
+
+//日付をn日進めた日付に更新する複合代入演算子 +=
+date date::operator +=(int n) {
+	date tmp = *this;	//今日の日付をクラスオブジェクトに保管します
+
+	//指定された日付まで飛びます
+	for (int i = 0; i < n; i++) {
+
+		//今日が大晦日なら明日は
+		if (tmp.m >= 12 && tmp.d >= dmax[11]) {
+
+			tmp.y++;		//来年の
+			tmp.m = 1;		//1月1日
+			tmp.d = 1;		//元旦です
+
+			//月末ならば、明日は月初めです
+		} else if (tmp.d >= dmax[tmp.m]) {
+
+			tmp.d = 1;		//来月の初日
+			tmp.m++;		//今年も残りわずか
+
+			//何も変わったことがなければ
+		} else {
+
+			tmp.d++;		//ただ明日に向かいます
+		}
+	}
+
+	return tmp;
+}
 
