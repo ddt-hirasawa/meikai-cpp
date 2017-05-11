@@ -119,10 +119,10 @@ date date::operator - (const date& tmp)
 }
 
 //日付を翌日に更新する増分演算子 ＋＋
-date operator ++ (const date& tmp)
+date date::operator ++ ()
 //明日の日付は、月や年月によって様変わりします。
 {
-	//date tmp = *this;	//今日の日付をクラスオブジェクトに保管します
+	date tmp = *this;	//今日の日付をクラスオブジェクトに保管します
 
 	//今日が12月31日の場合、
 	if(tmp.m == 12 && tmp.d == dmax[11]) {
@@ -149,7 +149,8 @@ date operator ++ (const date& tmp)
 			tmp.m++;
 		}
 	}
-
+	cout << "明日は ";
+	//明日を表示します
 	return tmp;
 }
 

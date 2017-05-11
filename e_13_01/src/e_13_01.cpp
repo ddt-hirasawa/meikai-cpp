@@ -142,9 +142,8 @@ int main() {
 
 	cout <<	dToday	<< "\n";
 
-	dToday++;
 
-	cout <<	dToday	<< "\n";
+	cout <<	++dToday	<< "\n";
 
 
 	return 0;

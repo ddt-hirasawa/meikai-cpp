@@ -6,12 +6,12 @@
 
 
 //	1  2  3  4  5  6  7  8  9  10 11 12 月の末日
-int dmax[] = {31,28,31,30,31,30,31,31,30,31,30,31};
+const int dmax[] = {31,28,31,30,31,30,31,31,30,31,30,31};
 
 class date{
 public:
 	int y,m,d;		// 西暦 月 日 を与えるデータメンバを構築する
-	static int dmax[];	// 静的メンバ 1月から12月の末日を配列に保管している
+	//static int dmax[];	// 静的メンバ 1月から12月の末日を配列に保管している
 	static int days_of_month(int y,int m);	//静的メンバ関数
 
 public:
@@ -68,7 +68,7 @@ public:
 	bool operator != (const date& tmp);
 	bool operator << (const date& tmp);
 	date operator - (const date& tmp);
-	date operator ++ (const date& tmp);
+	date operator ++ ();
 
 	std::string to_string() const;
 
