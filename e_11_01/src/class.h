@@ -3,11 +3,15 @@
 
  作成日 2017年5月10日
 
+ 編集日 2017年5月12日
+
  作成者 平澤敬介
  */
 
 #ifndef CLASS_H_
 #define CLASS_H_
+
+#include<iostream>
 
 #define HH 24	//	1日は24時間です			この４つの前提で時間クラスを
 #define MM 60	//	1時間は60分です			扱います
@@ -92,12 +96,55 @@ public:
 	}
 
 	//メンバ関数 時 分 秒 を調整する
-	//仮引数 無し
+	//仮引数 加算する値 , 時 分 秒 の選択
 	//返却値 無し
 
-	void set_time() {
+	void set_time(int select) {
 
 		int cnt = 0;			//共通のカウンタを設けます
+
+		int plus_time;
+
+		//時 分 秒 で選択された値をそれぞれ加算します
+		switch(select) {
+
+		//時が加算されました
+		case 0 :
+
+			//時間を加算します
+			std::cout << "何時間 : ";
+
+			//整数で時を加算します
+			std::cin >> plus_time;
+
+			//メンバ関数でクラス内の変数を間接的にアクセス
+			plus_hour(plus_time); break;
+
+		//分が加算されました
+		case 1 :
+
+			//分を加算します
+			std::cout << "何分 : ";
+
+			//整数で分を加算します
+			std::cin >> plus_time;
+
+			//メンバ関数でクラス内の変数を間接的にアクセス
+			plus_min(plus_time); break;
+
+		//秒が加算されました
+		case 2:
+			//秒を加算します
+			std::cout << "何秒 : ";
+
+			//整数で秒を加算します
+			std::cin >> plus_time;
+
+			//メンバ関数でクラス内の変数を間接的にアクセス
+			plus_sec(plus_time); break;
+
+		}
+
 
 		//加算したとき 60秒以上のとき
 		if (sec >= SS) {
