@@ -29,9 +29,14 @@ public:
 		ptr = ptr_;
 	}
 
-	 //デストラクタ
-	 ~String() {
-	 }
+	//デストラクタ
+	~String() {
+
+		/*if(this!= NULL) {
+			//デストラクト 削除
+			delete[] this;
+		}*/
+	}
 
 	//データメンバ フルネームを表示します
 	char* open_name() const {
