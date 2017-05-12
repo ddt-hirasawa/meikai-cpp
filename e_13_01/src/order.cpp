@@ -1,3 +1,22 @@
+/*
+ 演習13-1 日付クラス にテキストで指示している演算子関数を追加しなさい
+
+ 1.2つの日付が正しいかどうかの等価演算子 ==			OK
+ 2.2つの日付がことなっているかどうかの等価演算子 !=	OK
+ 3.2つの日付の大小を判定する関係演算子 > >= < <=     OK
+ 4.2つの日付の減算を行う減算演算子 -				OK
+ 5.日付を翌日に更新する増分演算子 ＋＋				OK
+ 6.日付を昨日に更新する増分演算子 --				OK
+ 7.日付をn日進めた日付に更新する複合代入演算子 +=	OK
+ 8.日付をn日戻した日付に更新する複合代入演算子 -=	OK
+ 9.日付のn日後の日付を求める加減演算子 +			OK
+ 10.日付のn日前の日付を求める加減演算子 -			OK
+
+ 作成日 2017年5月11日
+
+ 作成者 平澤敬介
+ */
+
 #include"class.h"
 
 using namespace std;
@@ -61,7 +80,7 @@ bool date::operator !=(const date& tmp)
 
 //2つの日付の大小を判定する関係演算子 > >= < <=
 //同じ動作をするので 課題では  << のみ使います
-bool date::operator <<(const date& tmp)
+bool date::operator <= (const date& tmp)
 // 未来 ->  true  過去  ->  false
 // tmp -> main のSelect   this -> main のdToday
 		{
@@ -272,8 +291,6 @@ date date::operator + (int n) {
 			tmp.d++;		//ただ明日に向かいます
 		}
 	}
-
-	return tmp;
 
 	return tmp;
 }

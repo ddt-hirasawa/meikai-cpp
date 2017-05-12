@@ -1,3 +1,22 @@
+/*
+ 演習13-1 日付クラス にテキストで指示している演算子関数を追加しなさい
+
+ 1.2つの日付が正しいかどうかの等価演算子 ==			OK
+ 2.2つの日付がことなっているかどうかの等価演算子 !=	OK
+ 3.2つの日付の大小を判定する関係演算子 > >= < <=     OK
+ 4.2つの日付の減算を行う減算演算子 -				OK
+ 5.日付を翌日に更新する増分演算子 ＋＋				OK
+ 6.日付を昨日に更新する増分演算子 --				OK
+ 7.日付をn日進めた日付に更新する複合代入演算子 +=	OK
+ 8.日付をn日戻した日付に更新する複合代入演算子 -=	OK
+ 9.日付のn日後の日付を求める加減演算子 +			OK
+ 10.日付のn日前の日付を求める加減演算子 -			OK
+
+ 作成日 2017年5月11日
+
+ 作成者 平澤敬介
+ */
+
 #ifndef CLASS_H_
 #define CLASS_H_
 
@@ -22,7 +41,7 @@ public:
 	//引数として与えた西暦はうるう年かどうかbool型で返却を行う関数
 	static bool leap_year(int year)
 	{
-		return (year%4 == 0 && year%100) || year%400;// テキストの通りだと警告が消えない && (もしくは) の部分をかっこでくくること
+		return ((year%4 == 0) && (year%100 != 0)) || (year%400 == 0);// テキストの通りだと警告が消えない && (もしくは) の部分をかっこでくくること
 	}
 
 	//メンバ関数 データメンバの年を返却します
@@ -66,7 +85,7 @@ public:
 	// 関数の宣言部分 課題の関数をすべて order.cpp にまとめる
 	bool operator == (const date& tmp);
 	bool operator != (const date& tmp);
-	bool operator << (const date& tmp);
+	bool operator <= (const date& tmp);
 	date operator - (const date& tmp);
 	date& operator ++ ();			//前置バージョン
 	date& operator -- (int);		//後置バージョン
