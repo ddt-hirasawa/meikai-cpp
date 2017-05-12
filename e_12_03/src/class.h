@@ -3,179 +3,198 @@
 
  作成日 2017年5月11日
 
+ 編集日 2017年5月12日
+
  作成者 平澤敬介
  */
 
 #ifndef CLASS_H_
 #define CLASS_H_
 
-//日付クラス用の 末日 と 1月 12月 西暦 を定義する
-#define matsubi1 31
-#define matsubi2 30
-#define matsubi3 28
-#define JANU	1
-#define DECE 12
-#define NOW_YEAR 2017
 #include<iostream>
 
-#include"sub.h"
+#define HH 24	//	1日は24時間です			この４つの前提で時間クラスを
+#define MM 60	//	1時間は60分です			扱います
+#define SS 60	//	1分は60秒です
+#define NN 0	//	時間の 0を基準としています
 
-// クラス time 西暦 月 日 を表示する データメンバは
-// y 年　m 月　d 日　 counter 経過日数　Matsubi 28 ～ 31日
 class Time {
-public:
-	int year_birth;				//データメンバ 年
-	int month_birth;			//データメンバ 月
-	int day_birth;				//データメンバ 日
-	int counter;				//データメンバ 末日を超えた分をカウントして月に反映させます
-	int Matsubi;				//データメンバ 年度中の月の末日
-	Date birth;					//クラス型データメンバ 自分の誕生日をキーボード入力
+	int hour;		// 時 を扱う変数をクラス内部で定義する
+	int min;		// 分 を扱う変数をクラス内部で定義する
+	int sec;		// 秒 を扱う変数をクラス内部で定義する
 
+//公開メンバ
 public:
+
 	//デフォルトコンストラクタ
 	Time();
-	//コンストラクタ 経過日数を0 末日を31日で初期化する
-	//
-	Time(int yy, int mm = 1, int dd = 1, const Date& birth_day = Date()) :
-			counter(0), Matsubi(31), birth(birth_day)	//	オブジェクトの構築と初期化
-														//カウンター -> 0  末日 -> 31日 誕生日 ->　クラス date のデフォルト
-	{
-		year_birth = yy;					//データメンバにクラスオブジェクトを初期化したときに与える値を代入
-		month_birth = mm;					//データメンバにクラスオブジェクトを初期化したときに与える値を代入
-		day_birth = dd;						//データメンバにクラスオブジェクトを初期化したときに与える値を代入
+
+	//コンストラクタ
+	Time(int h, int m = 0, int s = 0) {
+		hour = h;	// 初期化を 0分 0秒で行う
+		min = m;	//
+		sec = s;	// すべての要素を初期化できないので h = 0 とはできない
 	}
 
-	//メンバ関数 クラスオブジェクトに格納されている誕生日を表示します
+	//メンバ関数 時を返却します
 	//仮引数 無し
-	//返却値 クラスオブジェクトでまとめられた自分の誕生日
+	//返却値 データメンバの時
 
-	Date open() const {
+	int Hour() {
 
-		return birth;
+		//現在時刻を返却する ここでは 時
+		return hour;
 	}
-
-	//メンバ関数 データメンバの年を返却します
+	//メンバ関数 分を返却します
 	//仮引数 無し
-	//返却値 データメンバの年
+	//返却値 データメンバの分
 
-	int year() const {
+	int Min() {
 
-		return year_birth;
+		//現在時刻を返却する ここでは 分
+		return min;
 	}
-
-	//メンバ関数 データメンバの月を返却します
+	//メンバ関数 秒を返却します
 	//仮引数 無し
-	//返却値 データメンバの月
+	//返却値 データメンバの秒
 
-	int month() const {
+	int Sec() {
 
-		return month_birth;
+		//現在時刻を返却する ここでは 秒
+		return sec;
 	}
 
-	//メンバ関数 データメンバの日を返却します
-	//仮引数 無し
-	//返却値 データメンバの日
+	//メンバ関数 時を加算する  日 は定義されていないので 24時になれば 0時に/ 変換される。
+	//仮引数 加算する値
+	//返却値 無し
 
-	int day() const {
-
-		return day_birth;
+	void plus_hour(int tmp) {
+		hour += tmp;		//経過時間をデータメンバに反映させます
 	}
 
-	//メンバ関数 経過日数を返却する
-	//仮引数 無し
-	//返却値 データメンバの月を超えたカウントを返却
+	//メンバ関数 分を加算する
+	//仮引数 加算する値
+	//返却値 無し
 
-	int count() const {
+	void plus_min(int tmp) {
+		min += tmp;			//経過時間をデータメンバに反映させます
+							// 時が定義されているので 60分になれば 0分に変換されます
+	}
+	//メンバ関数 秒を加算する
+	//仮引数 加算する値
+	//返却値 無し
 
-		return counter;
+	void plus_sec(int tmp) {
+
+		int cnt = 0;		//超えた秒を分に加算するために定義します
+
+		sec += tmp;			//経過時間をデータメンバに反映させます
+
+		//分が定義されているので 60秒になれば 0秒に変換され
+
+		min += cnt;				//超えた秒は分に反映させます
 	}
 
-	// 前置演算子 ++ を前に置く型
-	Time& operator++() {
+	//メンバ関数 時 分 秒 を調整する
+	//仮引数 加算する値 , 時 分 秒 の選択
+	//返却値 無し
 
-		//dが末日にならなければ
-		//そのまま、明日になる
-		if (day_birth < Matsubi) {
+	void set_time(int select) {
 
-			//次の月に向かいます
-			day_birth++;
+		int cnt = 0;			//共通のカウンタを設けます
 
-			//繰り越し分を加算
-			counter++;
+		int plus_time;
 
-			//自分自身の参照を返却する
-			//データメンバを更新する
-			return *this;
+		//時 分 秒 で選択された値をそれぞれ加算します
+		switch(select) {
 
-			//その月の末日になったのなら
-		} else {
+		//時が加算されました
+		case 0 :
 
-			//月初めに向かい
-			day_birth = 1;
+			//時間を加算します
+			std::cout << "何時間 : ";
 
-			//12月ではないのなら
-			if (month_birth < DECE) {
+			//整数で時を加算します
+			std::cin >> plus_time;
 
-				//その月のデータメンバをインクリメントし
-				month_birth++;
+			//メンバ関数でクラス内の変数を間接的にアクセス
+			plus_hour(plus_time); break;
 
-				//12月ならば
-			} else {
-				//1月に戻り
-				month_birth = JANU;
+		//分が加算されました
+		case 1 :
 
-				//来年になる
-				year_birth++;
-			}
-			// 末日がその月で替わってくるため
-			// うるう年でないなら 2月の末日は28日
-			if (month_birth == 2) {
+			//分を加算します
+			std::cout << "何分 : ";
 
-				Matsubi = matsubi3;
-			// 4 6 9 11 月の末日は30日
-			} else if (month_birth == 4 || month_birth == 6 || month_birth == 9
-					|| month_birth == 11) {
+			//整数で分を加算します
+			std::cin >> plus_time;
 
-				//末日を30日にします
-				Matsubi = matsubi2;
+			//メンバ関数でクラス内の変数を間接的にアクセス
+			plus_min(plus_time); break;
 
-			// それ以外の月の末日は31日
-			} else {
+		//秒が加算されました
+		case 2:
+			//秒を加算します
+			std::cout << "何秒 : ";
 
-				//末日を31日にします
-				Matsubi = matsubi1;
-			}
+			//整数で秒を加算します
+			std::cin >> plus_time;
 
-			//演算が終わった自分自身を返却します
-			return *this;
+			//メンバ関数でクラス内の変数を間接的にアクセス
+			plus_sec(plus_time); break;
+
+		}
+
+
+		//加算したとき 60秒以上のとき
+		if (sec >= SS) {
+
+			do {
+				sec -= SS;		//1分は60秒です
+
+				cnt++;			//超えた秒は分に換算します
+
+				//60秒以内になれば終了
+			} while (sec > SS - 1);
+		}
+
+		min += cnt;				//分に反映させます
+
+		cnt = 0;				//カウンタを0に戻し 分を超えた分をカウントします
+
+		//加算したとき 60分以上のとき
+		if (min >= MM) {
+
+			//1時間の範囲に収まるように調整します
+			do {
+				min -= MM;		//1時間は60分です
+
+				cnt++;			//超えた分は時間に換算します
+
+				//60分以内になれば終了
+			} while (min > MM - 1);
+		}
+
+		hour += cnt;			//超えた分を時間に反映させます
+
+		cnt = 0;
+
+		//1日の範囲を超えた場合
+		if (hour >= HH) {
+
+			//1日の範囲に収まるように調整します
+			do {
+
+				hour -= HH;		//1日は24時間です
+
+				//24時間以内になれば終了
+			} while (hour > HH - 1);
 		}
 	}
 
-	//指定した月になれば falseを返却する
-	bool operator!() const {
-
-		// ここでは2017年 12月 31日
-		//if(y == NOW_YEAR && m == DECE && d == matsubi1)
-		if (year_birth == birth.y1 && month_birth == birth.m1
-				&& day_birth == birth.d1) {
-
-			//誕生日になりました
-			return false;
-
-		//誕生日はまだです
-		} else {
-
-			//まだ、日数を表示していきます
-			return true;
-		}
-	}
-
+	//関数宣言 order.cpp にまとめます
+	Time& operator += (int n);
+	Time& operator -= (int n);
 };
-
-//挿入子
-std::ostream& operator <<(std::ostream& s, const Time& x) {
-	//今の年 月 日 を表示します
-	return s << x.year() << "年" << x.month() << "月" << x.day() << "日\n";
-}
 
 #endif /* CLASS_H_ */
