@@ -109,11 +109,11 @@ public:
 
 
 	 delete[] ptr;
-	 }
+	 }*/
 
-
-	//String operator + (int);
-	//String operator + (int);*/
+	//演算子関数の定義 func.cppにまとめます
+	String& operator + (int);
+	String& operator = (char*);
 };
 
 #endif /* CLASS_H_ */

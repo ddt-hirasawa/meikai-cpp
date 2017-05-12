@@ -13,7 +13,7 @@ using namespace std;
 
 int main()
 {
-	char name[] = "HIRASAWA_KEISUKE";	// 自分の名前 自分の名前の先頭ポインタ
+	char name[] = "hirasawa_KEISUKE";	// 自分の名前 自分の名前の先頭ポインタ
 
 	char* ptr = name;
 
@@ -49,6 +49,24 @@ int main()
 	cout << human2.open_len() << "\n";
 	//中間文字を出せるのかの確認
 	cout << human2.med_length() << "\n";
+
+	human2 + 8;		//演算子関数 + の動作確認 大文字に変換します
+
+	//参照しているので、データメンバ自体を書き換えます
+	cout << human2.open_name() << "\n";
+
+	char* another = new char[30];		//他人の名前を書くための用紙を用意します
+
+	cout << "あなたは誰ですか？ : ";	//誰かの名前を入力してください
+
+	cin >> another;						//キーボードからのアルファベットで入力
+
+	human2 = another;					//演算子関数 + の動作確認 大文字に変換します
+
+	delete[] another;					//代入し終わったので 他人ではなく本人になりました
+
+	//参照しているので、データメンバ自体を書き換えます
+	cout << human2.open_name() << "\n";
 
 	return 0;
 }
