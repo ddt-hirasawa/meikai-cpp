@@ -50,24 +50,13 @@ int main()
 	//配列の全要素を比較します
 	for(int i=0;i < 8;i++){
 
-		cout << "x[" << i << "] = " << x[i] << "\n";
+		cout << "x[" << i << "] = " << (x[i]) << "\n";
 		// 変更点 演算子関数!を使っている部分
 		// クラスの true falseとは逆の表示にナル
 
-		cout << "bool型 : " << !x[i];
-		// 変更点 配列の値でbool型 0 1 を 文字
-		// True False を表示する処理を行っています
-
-		//判定部分 bool型は 1 0 なので
-		//見やすくします
-		if(true == !x[i]) {
-			//クラスで False なら bool型では true
-			cout << " TRUE\n";
-		//クラスが正解だと言ってきたら
-		} else {
-			//間違いなので、Falseを表示します
-			cout << " FALSE\n";
-		}
+		//訂正部分 bool 型の値をアルファベット表記します
+		cout << boolalpha;
+		cout << "bool型 : " << (!x[i]) << "\n";
 	}
 	return 0;
 }
