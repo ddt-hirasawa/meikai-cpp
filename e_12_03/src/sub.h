@@ -8,13 +8,12 @@
 */
 
 
-#ifndef DATE_H_
-#define DATE_H_
+#ifndef SUB_H_
+#define SUB_H_
 
 #include<iostream>
-#include"class.h"
 
-class date{
+class Date{
 public:
 	int y1;		//データメンバの年
 	int m1;		//データメンバの月
@@ -23,9 +22,9 @@ public:
 public:
 
 	//デフォルトコンストラクタ
-	date();
+	Date();
 	//コンストラクタ
-	date(int y2,int m2 = 1,int d2 = 1)
+	Date(int y2,int m2 = 1,int d2 = 1)
 	{
 		y1 = y2;		//クラスオブジェクトが初期化されたときの値を代入する
 		m1 = m2;		//クラスオブジェクトが初期化されたときの値を代入する
@@ -61,13 +60,13 @@ public:
 };
 
 //挿入子
-std::ostream& operator << (std::ostream& s,const date& tmp)
+std::ostream& operator << (std::ostream& s,const Date& tmp)
 {
 	// 呼び出されたら、誕生日を表示します
 	return s << "誕生日 : " << tmp.year() << "年" << tmp.month() << "月" << tmp.day() << "日\n";
 }
 //抽出子
-std::istream& operator >> (std::istream& s,date& tmp)
+std::istream& operator >> (std::istream& s,Date& tmp)
 {
 	//誕生日を設定します
 	std::cout << "誕生日\n";
@@ -89,4 +88,4 @@ std::istream& operator >> (std::istream& s,date& tmp)
 }
 
 
-#endif /* DATE_H_ */
+#endif /* SUB_H_ */

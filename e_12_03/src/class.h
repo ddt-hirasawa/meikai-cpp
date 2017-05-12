@@ -18,25 +18,25 @@
 #define NOW_YEAR 2017
 #include<iostream>
 
-#include"date.h"
+#include"sub.h"
 
 // クラス time 西暦 月 日 を表示する データメンバは
 // y 年　m 月　d 日　 counter 経過日数　Matsubi 28 ～ 31日
-class time {
+class Time {
 public:
 	int year_birth;				//データメンバ 年
 	int month_birth;			//データメンバ 月
 	int day_birth;				//データメンバ 日
 	int counter;				//データメンバ 末日を超えた分をカウントして月に反映させます
 	int Matsubi;				//データメンバ 年度中の月の末日
-	date birth;					//クラス型データメンバ 自分の誕生日をキーボード入力
+	Date birth;					//クラス型データメンバ 自分の誕生日をキーボード入力
 
 public:
 	//デフォルトコンストラクタ
-	time();
+	Time();
 	//コンストラクタ 経過日数を0 末日を31日で初期化する
 	//
-	time(int yy, int mm = 1, int dd = 1, const date& birth_day = date()) :
+	Time(int yy, int mm = 1, int dd = 1, const Date& birth_day = Date()) :
 			counter(0), Matsubi(31), birth(birth_day)	//	オブジェクトの構築と初期化
 														//カウンター -> 0  末日 -> 31日 誕生日 ->　クラス date のデフォルト
 	{
@@ -49,7 +49,7 @@ public:
 	//仮引数 無し
 	//返却値 クラスオブジェクトでまとめられた自分の誕生日
 
-	date open() const {
+	Date open() const {
 
 		return birth;
 	}
@@ -85,13 +85,13 @@ public:
 	//仮引数 無し
 	//返却値 データメンバの月を超えたカウントを返却
 
-	int Count() const {
+	int count() const {
 
 		return counter;
 	}
 
 	// 前置演算子 ++ を前に置く型
-	time& operator++() {
+	Time& operator++() {
 
 		//dが末日にならなければ
 		//そのまま、明日になる
@@ -173,7 +173,7 @@ public:
 };
 
 //挿入子
-std::ostream& operator <<(std::ostream& s, const time& x) {
+std::ostream& operator <<(std::ostream& s, const Time& x) {
 	//今の年 月 日 を表示します
 	return s << x.year() << "年" << x.month() << "月" << x.day() << "日\n";
 }

@@ -14,14 +14,15 @@ using namespace std;
 
 int main()
 {
+	//メンバとして与えます
 	//誕生日を入力する部分 メンバとしてのクラスとして扱う
-	date birth = date(0);
+	Date birth = Date(0);
 
 	//date の抽出子で誕生日を入力
 	cin >> birth;
 
-	// 時刻クラスの初期化 誕生日 dateを初期化に加える
-	time now = time(2017,5,11,birth);
+	// 時刻クラスの初期化 誕生日 birthを初期化に加える
+	Time now = Time(2017,5,11,birth);
 
 	//挿入子で
 	cout << now << "\n";
@@ -43,7 +44,7 @@ int main()
 	}
 
 	// 今日の日付から何日で大晦日なのか表示する
-	cout << "次の誕生日まで " << now.Count() << "日です\n";
+	cout << "次の誕生日まで " << now.count() << "日です\n";
 
 	return 0;
 }
