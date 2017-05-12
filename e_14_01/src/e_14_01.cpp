@@ -7,68 +7,37 @@
  */
 
 #include <iostream>
-#include<iomanip>
 
 #include"class.h"
 
 using namespace std;
 
+//関数宣言 デストラクタのテスト
+void death();
+
 int main()
 {
-	int num;				//クラスオブジェクトの配列の要素数となる変数
+	int num = 10;				//クラスオブジェクトの配列の要素数となる変数
 
-	//要素数を決めます
-	cout << "整数 : ";
+	Intarray x(num);	//クラスオブジェクト 配列要素数 10 で固定すぐ消すので簡潔に return 0 で消滅
 
-	//0 以上の整数値 テスト用
-	cin >> num;
+	cout << "関数内部\n";
 
-	Intarray obj(num);		//配列オブジェクトの初期化
+	//デストラクタが機能しているか確認します
+	death();
 
-	//入力した要素数分クラスオブジェクトの値を代入する
-	for (int i = 0; i < obj.size_set(); i++) {
-
-		//値はカウントアップで埋めていく
-		obj[i] = i;
-	}
-
-	Intarray Test_a(128);
-	Intarray Test_b(256);
-
-
-	cout <<	"Test_a と Test_b の要素数は"	<<	Test_a.size_set()	<<	"と"	<< Test_b.size_set();
-
-	Test_a = Test_b = obj;
-
-	cout << "から" << Test_a.size_set() << "と" << Test_b.size_set() << "に替わりました\n";
-
-	Intarray Test_c = Test_a;
-
-	cout << "obj Test_a Test_b Test_c\n";
-
-	cout << "---------------------------\n";
-
-	for(int i=0; i < num; i++) {
-
-		cout << setw(2) << obj[i] << setw(5) << Test_a[i] << setw(7) << Test_b[i] << setw(7) << Test_c[i] << "\n";
-	}
-
-
-	cout << "obj Test_a Test_b Test_c\n";
-
-	cout << "---------------------------\n";
-
-	for(int i=0; i < num; i++) {
-
-		cout << setw(2) << obj[i] << setw(5) << Test_a[i] << setw(7) << Test_b[i] << setw(7) << Test_c[i] << "\n";
-
-
-		obj.~Intarray(i);
-		Test_a.~Intarray(i);
-		Test_b.~Intarray(i);
-		Test_c.~Intarray(i);
-	}
-
+	cout << "関数内部\n";
 
 	return 0;
+}
+
+//関数 デストラクタのテストを行うために、動的記憶域期間内の関数内でクラスを生成し破棄されることを確認する
+//仮引数 なし
+//返却値 なし
+void death()
+{
+	//関数の呼び出しが終われば消滅
+	Intarray death(100);
+
+
 }
