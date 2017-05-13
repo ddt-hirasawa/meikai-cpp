@@ -12,6 +12,8 @@
 #include<cstring>
 #include<iostream>
 
+#define MAX 30	//名前の長さ MAX 30文字
+
 class String {
 
 	int len;		//	文字列の長さ
@@ -20,22 +22,24 @@ class String {
 public:
 
 	//明示的コンストラクタ
-	explicit String(char* ptr_)
+	explicit String(int len_) {
 
-	//名前の長さは cstring の関数でコンストラクタが呼ばれたとき代入する
-	:
-			len(std::strlen(ptr_)) {
-		//初期化されたときの値をそのままデータメンバへ
-		ptr = ptr_;
+		ptr = new char[MAX];			//名前を書く枠を30文字分確保
+
+		//ローマ字で名前を30文字以内で入力
+		std::cout << "名前の入力 : ";
+
+		//確保した領域に名前を補完
+		std::cin >> ptr;
+
+		len = std::strlen(ptr);	//名前の長さは cstring の関数でコンストラクタが呼ばれたとき代入す
+
 	}
 
 	//デストラクタ
 	~String() {
 
-		/*if(this!= NULL) {
-			//デストラクト 削除
-			delete[] this;
-		}*/
+			delete[] ptr;
 	}
 
 	//データメンバ フルネームを表示します
@@ -88,8 +92,12 @@ public:
 	//変換コンストラクタ
 	String(const char* tmp) :
 			ptr(const_cast<char*>(tmp)) {
+
+
 		//文字の長さを文字数で初期化
 		len = std::strlen(tmp);
+
+		ptr = new char[len];			//名前を書く枠を文字分確保
 	}
 
 	//コピーコンストラクタ

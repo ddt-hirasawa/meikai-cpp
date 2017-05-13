@@ -15,11 +15,9 @@ int main()
 {
 	char name[] = "hirasawa_KEISUKE";	// 自分の名前 自分の名前の先頭ポインタ
 
-	char* ptr = name;
-
 	//変換コンストラクタの動作確認
 	//クラスオブジェクト 人間で生成
-	String human = "human_man";
+	String human = name;
 
 	cout << "変換コンストラクタ \n";
 	//クラスに代入した時の名前が表示されるかの確認
@@ -43,7 +41,7 @@ int main()
 
 	//明示的コンストラクタの動作確認
 	//クラスオブジェクト 人間で生成
-	String human2(ptr);
+	String human2(1);
 
 	cout << "明示的コンストラクタ \n";
 	//クラスに代入した時の名前が表示されるかの確認
