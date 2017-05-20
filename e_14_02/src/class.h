@@ -18,21 +18,25 @@ class Intarray {
 
 public:
 
+	//例外クラス
 	class IdxRngERR {
 
 	private :
 
-		Intarray* p_array;
-		int idx;
+		Intarray* p_array;		//配列クラスの要素を指すポインタ
+		int idx;				//その配列の番号
 
 	public:
 
+		//コンストラクタ
 		IdxRngERR(Intarray* p,int num) :
 
+			//初期化子により決定 throw から来る値
 			p_array(p), idx(num) {
 
 		}
 
+		//ゲッタ 例外を検出した配列の番号を返却
 		int index() {
 
 			return idx;
@@ -75,6 +79,7 @@ public:
 		//負の値と要素数以上は受け付けません
 		if(i < 0 || nelem <= i) {
 
+			//if文の条件にかかった場合 その値自信を例外クラスになげる
 			throw IdxRngERR(this, i);
 		}
 

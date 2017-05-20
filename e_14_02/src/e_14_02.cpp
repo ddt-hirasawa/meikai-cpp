@@ -40,7 +40,8 @@ int main()
 	Intarray Test_a(32);		//配列 128個の要素を持つ配列
 	Intarray Test_b(64);		//配列 256個の要素を持つ配列
 
-	error_array_test(20,22);
+	//error_array_test(3000000000,10);			//メモリの確保に失敗
+	error_array_test(num,10);				//添字が多い
 
 	//演算子 = の機能を確かめます
 	cout <<	"Test_a と Test_b の要素数は"	<<	Test_a.size_set()	<<	"と"	<< Test_b.size_set();

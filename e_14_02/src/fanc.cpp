@@ -34,8 +34,9 @@ Intarray::Intarray(const Intarray& x)
 
 		vec = new int[nelem];	//その要素数分 先頭からの領域を確保
 
-		for(int i = nelem; i <= 0 ; i--) {
-
+		//コピー元の配列の中身をこちらに代入する
+		for (int i = 0; i < nelem; i++) {
+			//先頭から末尾まで
 			vec[i] = 0;
 		}
 	}
