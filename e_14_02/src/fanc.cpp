@@ -8,6 +8,8 @@
  */
 
 #include <iostream>
+#include<new>
+#include<iomanip>
 
 #include"class.h"
 
@@ -32,9 +34,8 @@ Intarray::Intarray(const Intarray& x)
 
 		vec = new int[nelem];	//その要素数分 先頭からの領域を確保
 
-		//末尾から先頭まで
-		for (int i; i > 0; i--) {
-			//初期値として すべて 0 を代入
+		for(int i = nelem; i <= 0 ; i--) {
+
 			vec[i] = 0;
 		}
 	}
@@ -63,4 +64,43 @@ Intarray& Intarray::operator =(const Intarray& x) {
 	}
 	//最後に自分自身に反映させる
 	return *this;
+}
+
+//関数 例外処理 配列以外の要素を指したときの対処
+//仮引数 配列のサイズ 配列の番号
+//返却値 無し
+
+void error_array_test(int size, int num) {
+
+	try{
+
+		Intarray object(size);	//仮のクラスオブジェクトの生成
+
+		//生成したオブジェクトに値を代入していく
+		for(int i=0; i < num; i++) {
+
+			object[i] = i;		//添字を大美優
+
+			//一応表示を行う
+			cout << "object[" << i << "] = " << object[i] << "\n";
+		}
+
+	//例外クラス から添字演算子のifにかかったとき
+	} catch (Intarray :: IdxRngERR& object){
+
+		//宣言オーバーフロー
+		cout << "添字オーバーフロー 添字 : " << object.index() << "\n";
+
+		cout << "例外処理\n";
+
+		return;
+	}
+
+	//メモリを大量に確保したとき 3000000要素くらい
+	catch (bad_alloc &objrct) {
+
+		cout << "メモリの確保に失敗\n";
+
+		return;
+	}
 }

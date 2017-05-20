@@ -17,6 +17,28 @@ class Intarray {
 	int* vec;		//配列の先頭要素のポインタ
 
 public:
+
+	class IdxRngERR {
+
+	private :
+
+		Intarray* p_array;
+		int idx;
+
+	public:
+
+		IdxRngERR(Intarray* p,int num) :
+
+			p_array(p), idx(num) {
+
+		}
+
+		int index() {
+
+			return idx;
+		}
+	};
+
 	//明示的コンストラクタ		暗黙の型変換を抑止する
 	//デフォルトコンストラクタを定義できない？
 	explicit Intarray(int size) :
@@ -49,6 +71,12 @@ public:
 
 	//演算子関数 []
 	int& operator [](int i) {
+
+		//負の値と要素数以上は受け付けません
+		if(i < 0 || nelem <= i) {
+
+			throw IdxRngERR(this, i);
+		}
 
 		return vec[i];
 	}
