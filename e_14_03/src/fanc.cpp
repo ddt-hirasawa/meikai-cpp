@@ -9,6 +9,7 @@
 #include"class.h"
 #include<iostream>
 #include<cctype>
+#include<cstring>
 
 using namespace std;
 
@@ -42,6 +43,16 @@ String& String::operator =(char* name) {
 	this->ptr[len1] = '\0';		//文字化けするのでナル文字を置きます
 
 	this->len = len1;				//全文字数はコンストラクタで初期化されているので更新します
+
+	//自分自身に反映させます
+	return *this;
+}
+
+//演算子関数 +=
+//加算された数字で先頭から小文字を大文字に変換します
+String& String::operator += (char* name) {
+
+	this->ptr = strcat(this->ptr,name);
 
 	//自分自身に反映させます
 	return *this;

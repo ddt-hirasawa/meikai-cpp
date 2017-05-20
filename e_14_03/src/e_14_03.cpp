@@ -13,7 +13,7 @@ using namespace std;
 
 int main()
 {
-	char name[] = "hirasawa_KEISUKE";	// 自分の名前 自分の名前の先頭ポインタ
+	const char name[] = "hirasawa_KEISUKE";	// 自分の名前 自分の名前の先頭ポインタ
 
 	//変換コンストラクタの動作確認
 	//クラスオブジェクト 人間で生成
@@ -74,6 +74,14 @@ int main()
 	cout << "名前の全文字数 : " << human2.open_len() << "\n";
 	//中間文字を出せるのかの確認
 	cout << "名前の中間文字 : " << human2.med_length() << "\n";
+
+	char company[] = ".DDt";		//社名 : DDt
+
+	cout << "演算子関数 += により文字を追加します\n";
+	human2 += company;		//演算子関数 += の動作確認
+
+	//社名を追加します
+	cout << "名前 : " << human2.open_name();
 
 	//代入し終わったので 他人ではなく本人になりました
 	delete[] another;

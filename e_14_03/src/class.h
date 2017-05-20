@@ -33,7 +33,6 @@ public:
 		std::cin >> ptr;
 
 		len = std::strlen(ptr);	//名前の長さは cstring の関数でコンストラクタが呼ばれたとき代入す
-
 	}
 
 	//デストラクタ
@@ -98,6 +97,13 @@ public:
 		len = std::strlen(tmp);
 
 		ptr = new char[len];			//名前を書く枠を文字分確保
+
+		for (int i = 0; i < len; i++) {
+
+			//自分と参照している相手は同じ人間です
+			ptr[i] = tmp[i];
+		}
+		ptr[len] = '\0';		//文字化けするのでナル文字を入れます
 	}
 
 	//コピーコンストラクタ
@@ -119,6 +125,7 @@ public:
 	//演算子関数の定義 func.cppにまとめます
 	String& operator +(int);
 	String& operator =(char*);
+	String& operator +=(char*);
 };
 
 #endif /* CLASS_H_ */
