@@ -9,21 +9,38 @@
 #include<iostream>
 #include<iomanip>
 #include"class.h"
+#include<cstdlib>
+#include<ctime>
 
 using namespace std;
 
 int main()
 {
-	Matrix tmp(9,9);			//クラスで	9×9の配列を作成します
+
+	int len1, len2;					//配列の行と列を決定する変数を定義
+
+	//配列の行をキーボード入力で決定
+	cout << "行 : ";
+
+	//配列の要素のため正の整数のみ、受けつけます
+	cin >> len1;
+
+	//配列の列をキーボード入力で決定
+	cout << "列 : ";
+
+	//配列の要素のため正の整数のみ、受けつけます
+	cin >> len2;
+
+	Matrix tmp(len1,len2);			//クラスで	9×9の配列を作成します
 
 	//宣言 クラス内のコンストラクタを使います
 	cout << "コンストラクタ\n";
 
 	//行分を操作するため、ループします
-	for(int i=1; i <= 9; i++) {
+	for(int i=1; i <= len1; i++) {
 
 		//列分を操作するため、ループします
-		for(int j=1; j <= 9; j++) {
+		for(int j=1; j <= len2; j++) {
 
 			tmp[i][j] = i * j;		//九九の値を各要素に代入します
 
@@ -39,10 +56,10 @@ int main()
 	cout << "コピーコンストラクタ\n";
 
 	//行分を操作するため、ループします
-	for(int i=1; i <= 9; i++) {
+	for(int i=1; i <= len1; i++) {
 
 		//列分を操作するため、ループします
-		for(int j=1; j <= 9; j++) {
+		for(int j=1; j <= len2; j++) {
 
 			//クラスで定義しているコピーコンストラクタの動作を確認します
 			 cout << " copy[" << i << "][" << j << "] = "<< setw(3) << copy[i][j] << " ";
@@ -56,10 +73,10 @@ int main()
 	Matrix plus = tmp + copy;			//演算子関数でクラス同士の配列を加算します
 
 	//行分を操作するため、ループします
-	for(int i=1; i <= 9; i++) {
+	for(int i=1; i <= len1; i++) {
 
 		//列分を操作するため、ループします
-		for(int j=1; j <= 9; j++) {
+		for(int j=1; j <= len2; j++) {
 
 			//クラスで定義している演算子関数 + の動作を確認します
 			 cout << " plus[" << i << "][" << j << "] = "<< setw(3) << plus[i][j] << " ";
@@ -73,10 +90,10 @@ int main()
 	Matrix minus = plus - copy - tmp;	//演算子関数でクラス同士の配列を減算します
 
 	//行分を操作するため、ループします
-	for(int i=1; i <= 9; i++) {
+	for(int i=1; i <= len1; i++) {
 
 		//列分を操作するため、ループします
-		for(int j=1; j <= 9; j++) {
+		for(int j=1; j <= len2; j++) {
 
 			//クラスで定義している演算子関数 - の動作を確認します
 			 cout << "minus[" << i << "][" << j << "] = "<< setw(3) << minus[i][j] << " ";
@@ -90,10 +107,10 @@ int main()
 	Matrix produ = plus * 3;			//演算子関数でmain内で与える変数を積算します
 
 	//行分を操作するため、ループします
-	for(int i=1; i <= 9; i++) {
+	for(int i=1; i <= len1; i++) {
 
 		//列分を操作するため、ループします
-		for(int j=1; j <= 9; j++) {
+		for(int j=1; j <= len2; j++) {
 
 			//クラスで定義している演算子関数 * の動作を確認します
 			 cout << "produ[" << i << "][" << j << "] = "<< setw(3) << produ[i][j] << " ";
@@ -107,10 +124,10 @@ int main()
 	Matrix sub = produ;					//演算子関数で クラス配列の値を代入します
 
 	//行分を操作するため、ループします
-	for(int i=1; i <= 9; i++) {
+	for(int i=1; i <= len1; i++) {
 
 		//列分を操作するため、ループします
-		for(int j=1; j <= 9; j++) {
+		for(int j=1; j <= len2; j++) {
 
 			//クラスで定義している演算子関数 = の動作を確認します
 			 cout << "  sub[" << i << "][" << j << "] = "<< setw(3) << sub[i][j] << " ";
